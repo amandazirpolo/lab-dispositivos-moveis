@@ -52,7 +52,7 @@ class HomeState extends State<Home> {
               onPressed: () {
                 setState(() {
                   tam = lista.length;
-                  pos = Random().nextInt(tam - 1);
+                  pos = Random().nextInt(tam);
                   frase = lista[pos];
                 });
               },
