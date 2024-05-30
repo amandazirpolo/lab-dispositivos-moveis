@@ -33,8 +33,6 @@ class _MyWidgetState extends State<Game3x3> {
     final String machineName = args['machineName'] as String;
     final String gamerSymbol = args['gamerSymbol'] as String;
     final String machineSymbol = args['machineSymbol'] as String;
-   // bool state = args['state'] as bool;
-    int rounds = args['rounds'] as int;
 
     // sorteia quem é o primeiro jogador
     Random random = Random();
@@ -44,21 +42,27 @@ class _MyWidgetState extends State<Game3x3> {
     } else {
       gamerTime = machineSymbol;
     }
-
+    
     /* como as variaveis so existem no override, criei uma variavel
     da classe para usar nos widgets novos */
     gamer = gamerName;
     gamerS = gamerSymbol;
     machine = machineName;
     gamerM = machineSymbol;
-    //round = rounds;
+
+    // indica que o jogador pode iniciar o jogo
+    if (gamerTime == gamerS) {
+      info = '$gamer é a sua vez de jogar :)';
+    } else {
+      info = '$machine é a sua vez de jogar :)';
+    }
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Jogo da Velha"),
-          backgroundColor: Color.fromARGB(255, 246, 142, 177),
+          title: const Text("Jogo da Velha"),
+          backgroundColor: const Color.fromARGB(255, 246, 142, 177),
         ),
-        backgroundColor: Color.fromARGB(255, 255, 226, 232),
+        backgroundColor: const Color.fromARGB(255, 255, 226, 232),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -66,9 +70,10 @@ class _MyWidgetState extends State<Game3x3> {
                 absorbing: !state,
                 child: Column(children: [
                   Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Text(info,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.black)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -94,14 +99,10 @@ class _MyWidgetState extends State<Game3x3> {
                       button3x3(row: 2, column: 2),
                     ],
                   ),
-                  returnButton()
-                  // AbsorbPointer(
-                  //   absorbing: state,
-                  //   child: Opacity(
-                  //     opacity: ,
-                  //     child: returnButton())
-                  // )
-                ]))
+                ])),
+            AbsorbPointer(
+                absorbing: state,
+                child: Opacity(opacity: state ? 0 : 1, child: returnButton()))
           ],
         ));
   }
@@ -115,18 +116,19 @@ class _MyWidgetState extends State<Game3x3> {
             onPressed: () {
               setState(() {
                 game(row: row, column: column);
-                bool tmp = checkWinner(gamerTime: gamerTime, row: row, column: column);
-                if(tmp == true){
+                bool tmp =
+                    checkWinner(gamerTime: gamerTime, row: row, column: column);
+                if (tmp == true) {
                   state = false;
                 }
               });
             },
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(100, 100),
-                backgroundColor: Color.fromARGB(255, 246, 142, 177)),
+                backgroundColor: const Color.fromARGB(255, 246, 142, 177)),
             child: Text(
               positions[row][column],
-              style: TextStyle(fontSize: 50, color: Colors.black),
+              style: const TextStyle(fontSize: 50, color: Colors.black),
             ),
           )),
     );
@@ -143,9 +145,10 @@ class _MyWidgetState extends State<Game3x3> {
         },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(
-              Color.fromARGB(255, 246, 142, 177)), // Define a cor do botão
+              const Color.fromARGB(
+                  255, 246, 142, 177)), // Define a cor do botão
         ),
-        child: Text(
+        child: const Text(
           'Jogar novamente',
           style: TextStyle(color: Colors.black),
         ),
