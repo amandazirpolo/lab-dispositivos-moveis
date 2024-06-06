@@ -148,7 +148,11 @@ class HomeState extends State<Home> {
                 });
               }),
           ElevatedButton(
-            onPressed: _save,
+            onPressed: () {
+              _save;
+              print("nome do jogador: $nomeController");
+              print("nome da maquina: $nomeController");
+            },
             child: Text("Salvar"),
           )
         ]))));

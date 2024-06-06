@@ -42,7 +42,7 @@ class _MyWidgetState extends State<Game3x3> {
     } else {
       gamerTime = machineSymbol;
     }
-    
+
     /* como as variaveis so existem no override, criei uma variavel
     da classe para usar nos widgets novos */
     gamer = gamerName;
@@ -174,6 +174,7 @@ class _MyWidgetState extends State<Game3x3> {
     // se nao tem vencedor e aconteceram 9 jogadas é pq teve empate
     else if ((hasWinner == false) && (round == 9)) {
       info = 'Empate!';
+      state = false;
     }
     // se nao tem vencedor e nao aconteceram 9 jogadas atualiza as posicoes
     else {
@@ -181,7 +182,7 @@ class _MyWidgetState extends State<Game3x3> {
       if (gamerTime == gamerS) {
         gamerTime = gamerM;
         name = machine;
-      } else if (gamerTime == gamerM) {
+      } else {
         gamerTime = gamerS;
         name = gamer;
       }

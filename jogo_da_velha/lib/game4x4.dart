@@ -73,8 +73,8 @@ class _MyWidgetState extends State<Game4x4> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(info,
-                      style: const TextStyle(fontSize: 20, color: Colors.black)
-                    ),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.black)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -112,19 +112,12 @@ class _MyWidgetState extends State<Game4x4> {
                       button4x4(row: 3, column: 3)
                     ],
                   ),
-                ]
-              )
-            ),
+                ])),
             AbsorbPointer(
-              absorbing: state,
-              child: Opacity(
-                opacity: state ? 0 : 1,
-                child: returnButton()
-              )
-            )
+                absorbing: state,
+                child: Opacity(opacity: state ? 0 : 1, child: returnButton()))
           ],
-        )
-      );
+        ));
   }
 
   Widget button4x4({required int row, required int column}) {
@@ -136,8 +129,9 @@ class _MyWidgetState extends State<Game4x4> {
             onPressed: () {
               setState(() {
                 game(row: row, column: column);
-                bool tmp = checkWinner(gamerTime: gamerTime, row: row, column: column);
-                if(tmp == true){
+                bool tmp =
+                    checkWinner(gamerTime: gamerTime, row: row, column: column);
+                if (tmp == true) {
                   state = false;
                 }
               });
@@ -164,7 +158,8 @@ class _MyWidgetState extends State<Game4x4> {
         },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(
-              const Color.fromARGB(255, 246, 142, 177)), // Define a cor do botão
+              const Color.fromARGB(
+                  255, 246, 142, 177)), // Define a cor do botão
         ),
         child: const Text(
           'Jogar novamente',
@@ -188,10 +183,12 @@ class _MyWidgetState extends State<Game4x4> {
         name = gamer;
       }
       info = '$name ganhou o jogo :)';
+      state = false;
     }
     // se nao tem vencedor e aconteceram 16 jogadas é pq teve empate
     else if ((hasWinner == false) && (round == 16)) {
       info = 'Empate!';
+      state = false;
     }
     // se nao tem vencedor e nao aconteceram 16 jogadas atualiza as posicoes
     else {
@@ -199,7 +196,7 @@ class _MyWidgetState extends State<Game4x4> {
       if (gamerTime == gamerS) {
         gamerTime = gamerM;
         name = machine;
-      } else if (gamerTime == gamerM) {
+      } else {
         gamerTime = gamerS;
         name = gamer;
       }
