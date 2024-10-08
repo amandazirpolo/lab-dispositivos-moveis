@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return HomeState();
@@ -28,7 +30,7 @@ class HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Frases Aleatórias"),
+        title: const Text("Frases Aleatórias"),
         backgroundColor: Colors.green,
       ),
       body: Center(
@@ -41,12 +43,12 @@ class HomeState extends State<Home> {
               width: 270.0,
               height: 230.0,
               alignment: Alignment.center,
-              decoration: new BoxDecoration(
-                image: DecorationImage(
+              decoration: const BoxDecoration(
+                image: const DecorationImage(
                     image: AssetImage('images/title.png'), fit: BoxFit.fill),
               ),
             ),
-            Text("Clique abaixo para gerar uma frase!",
+            const Text("Clique abaixo para gerar uma frase!",
                 style: TextStyle(fontSize: 30)),
             ElevatedButton(
               onPressed: () {
@@ -62,13 +64,13 @@ class HomeState extends State<Home> {
                   borderRadius: BorderRadius.circular(5),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Nova Frase',
                 style: TextStyle(fontSize: 30, color: Colors.white),
               ),
             ),
             Text(frase, 
-              style: TextStyle(fontSize: 30)
+              style: const TextStyle(fontSize: 30)
             ,)
           ],
         )),
