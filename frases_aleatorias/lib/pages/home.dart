@@ -44,7 +44,7 @@ class HomeState extends State<Home> {
               height: 230.0,
               alignment: Alignment.center,
               decoration: const BoxDecoration(
-                image: const DecorationImage(
+                image: DecorationImage(
                     image: AssetImage('images/title.png'), fit: BoxFit.fill),
               ),
             ),
